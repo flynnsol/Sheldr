@@ -1,3 +1,4 @@
+
 # Import All Commands from the Commands Directory
 
 Dir[File.expand_path('./commands/*.rb', File.dirname(__FILE__))].each do |file|
