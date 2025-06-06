@@ -22,13 +22,14 @@ class Add < Dry::CLI::Command
   def create_command
     capitalized_name = name.capitalize
     current_dir = Dir.pwd
-    name_array = current_dir.split("\\")
+    name_array = current_dir.split("/")
     app_name = name_array[name_array.length() - 1]
     capitalized_app_name = app_name.capitalize
 
     # create command file
     puts "Creating #{name}.rb command file."
     Dir.chdir("lib")
+    puts "#{app_name}"
     Dir.chdir("#{app_name}")
     Dir.chdir("commands")
     command_file = File.new("#{name}.rb", "w")
