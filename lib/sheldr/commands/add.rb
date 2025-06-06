@@ -29,7 +29,6 @@ class Add < Dry::CLI::Command
     # create command file
     puts "Creating #{name}.rb command file."
     Dir.chdir("lib")
-    puts "#{app_name}"
     Dir.chdir("#{app_name}")
     Dir.chdir("commands")
     command_file = File.new("#{name}.rb", "w")
