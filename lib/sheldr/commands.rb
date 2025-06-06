@@ -19,3 +19,4 @@ end
 
 Sheldr::CLI::Commands.register "version", Version, aliases: ["v", "-v", "--version"]
 Sheldr::CLI::Commands.register "new", New
+Sheldr::CLI::Commands.register "add", Add
