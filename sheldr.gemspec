@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["flynn@flynnsol.com"]
 
   spec.summary = "Ruby CLI Building Tool"
-  spec.description = "Ruby CLI Building Tool"
+  spec.description = "Sheldr is a CLI tool built in Ruby that is designed to assist in creating CLI tools/projects."
   spec.homepage = "https://github.com/flynnsol/Sheldr"
   spec.required_ruby_version = ">= 3.1.0"
 
