@@ -314,7 +314,7 @@ gem \"dry-cli\"")
     # create LICENSE.txt
     puts ("Creating the LICENSE.txt file.")
     license_file = File.new("LICENSE.txt", "w")
-    license_file.puts("Copyright 2025 Flynn Sol
+    license_file.puts("Copyright [Current Year] [Your Name Here]
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 

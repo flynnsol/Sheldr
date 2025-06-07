@@ -9,3 +9,28 @@ While searching for CLI tools to use in a Ruby project I came across TTY (telety
 ## What does Sheldr do?
 
 Sheldr allows you to quickly create new CLI applications while using the Sheldr CLI itself. Below you'll find more instructions on what those commands are and how to utilize them to create projects of different sizes and complexity.
+
+## How to use Sheldr:
+
+> TODO: Add Usage Information Here
+
+## Feature Functionality Tracking
+
+- [x] "new" command working to create project
+- [x] "add" command working to add commands to project
+- [ ] allow arguments for "new" command
+    - [ ] license (do after template files are being used)
+    - [ ] author
+    - [ ] email
+    - [ ] summary
+    - [ ] description
+    - [ ] homepage
+    - [ ] rubyversion
+    - [ ] allowed_push_host
+    - [ ] sourcecode_uri
+    - [ ] chargelog_uri
+- [ ] allow arguments for "add" command
+    - [ ] description
+    - [ ] arguments
+    - [ ] examples
+- [ ] switch to creating files from template files
