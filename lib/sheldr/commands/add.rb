@@ -1,22 +1,19 @@
 class Add < Dry::CLI::Command
-  attr_reader :name
+  attr_reader :name, :description
 
   desc "Creates a new command for your CLI Application"
 
-  argument :name, desc: "Name of command"
+  argument :name, required: true, desc: "Name of the Command"
+  option :desc, default: "Description", desc: "Description of the Command"
 
   example [
     "command # Creates a new command for the CLI Application with the name 'command'"
   ]
 
-  def call(name: nil, **)
+  def call(name: nil, **options)
     @name = name
-    if name.nil?
-      puts "No valid arguments - See info about the new command below"
-      system_command("sheldr add --help")
-    else
-      create_command
-    end
+    @description = options.fetch(:desc)
+    create_command
   end
 
   def create_command
@@ -33,7 +30,7 @@ class Add < Dry::CLI::Command
     Dir.chdir("commands")
     command_file = File.new("#{name}.rb", "w")
     command_file.puts("class #{capitalized_name} < Dry::CLI::Command
-  desc \"TODO: Description\"
+  desc \"#{description}\"
   
   def call(*)
     puts \"This is the new command #{name}.\"
