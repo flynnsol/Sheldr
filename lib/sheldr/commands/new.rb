@@ -357,7 +357,7 @@ require_relative \"lib/#{name}/version\"
 Gem::Specification.new do |spec|
   spec.name = \"#{name}\"
   spec.version = #{capitalized_name}::VERSION
-  spec.authors = #{author}
+  spec.authors = [\"#{author}\"]
   spec.email = [\"#{email}\"]
 
   spec.summary = \"#{summary}\"
