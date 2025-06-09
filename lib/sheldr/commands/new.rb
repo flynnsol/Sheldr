@@ -1,22 +1,38 @@
 class New < Dry::CLI::Command
-  attr_reader :name
+  attr_reader :name, :author, :summary, :description, :homepage, :rubyversion, :aph, :sourcecode, :changelog
 
   desc "Creates a new CLI Application"
 
-  argument :name, desc: "Name of Application"
+  argument :name, required: true, desc: "Name of the Application"
+  option :author, default: "TODO: Author Name", desc: "Author of the Application"
+  option :email, default: "TODO: Email", desc: "Email for the Application"
+  option :summary, default: "TODO: Summary", desc: "Summary of the Application"
+  option :desc, default: "TODO: Description", desc: "Description of the Application"
+  option :homepage, default: "TODO: Homepage URI", desc: "Homepage URI of the Application"
+  option :rubyversion, default: ">= 3.1.0", desc: "Ruby Version of the Application"
+  option :aph, default: "https://rubygems.org", desc: "Allowed Push Host"
+  option :sourcecode, default: "TODO: Sourcecode URI", desc: "Sourcecode URI of the Application"
+  option :changelog, default: "TODO: Changelog URI", desc: "Changelog URI of the Application"
 
   example [
     "app # Creates a new CLI Application with the name 'app'"
   ]
 
-  def call(name: nil, **)
+  def call(name: nil, **options)
+    # Set Variables
     @name = name
-    if name.nil?
-      puts "No valid arguments - See info about the new command below"
-      system_command("sheldr new --help")
-    else
-      create_folder_structure
-    end
+    @author = options.fetch(:author)
+    @email = options.fetch(:email)
+    @summary = options.fetch(:summary)
+    @description = options.fetch(:desc)
+    @homepage = options.fetch(:homepage)
+    @rubyversion = options.fetch(:rubyversion)
+    @aph = options.fetch(:aph)
+    @sourcecode = options.fetch(:sourcecode)
+    @changelog = options.fetch(:changelog)
+
+    # Check for main Argument
+    create_folder_structure
   end
 
   def create_folder_structure
@@ -314,7 +330,7 @@ gem \"dry-cli\"")
     # create LICENSE.txt
     puts ("Creating the LICENSE.txt file.")
     license_file = File.new("LICENSE.txt", "w")
-    license_file.puts("Copyright [Current Year] [Your Name Here]
+    license_file.puts("Copyright [Current Year] #{author}
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -341,19 +357,19 @@ require_relative \"lib/#{name}/version\"
 Gem::Specification.new do |spec|
   spec.name = \"#{name}\"
   spec.version = #{capitalized_name}::VERSION
-  spec.authors = [\"TODO: Add Author\"]
-  spec.email = [\"TODO: Add Email\"]
+  spec.authors = #{author}
+  spec.email = [\"#{email}\"]
 
-  spec.summary = \"TODO: Add Summary\"
-  spec.description = \"TODO: Add Description\"
-  spec.homepage = \"TODO: Add Homepage\"
-  spec.required_ruby_version = \">= 3.1.0\"
+  spec.summary = \"#{summary}\"
+  spec.description = \"#{description}\"
+  spec.homepage = \"#{homepage}\"
+  spec.required_ruby_version = \"#{rubyversion}\"
 
-  spec.metadata[\"allowed_push_host\"] = \"TODO: Set to your gem server 'https://example.com'\"
+  spec.metadata[\"allowed_push_host\"] = \"#{aph}\"
 
   spec.metadata[\"homepage_uri\"] = spec.homepage
-  spec.metadata[\"source_code_uri\"] = \"TODO: Add Sourcecode URI\"
-  spec.metadata[\"changelog_uri\"] = \"TODO: Add Changelog URI\"
+  spec.metadata[\"source_code_uri\"] = \"#{sourcecode}\"
+  spec.metadata[\"changelog_uri\"] = \"#{changelog}\"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
