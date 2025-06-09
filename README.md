@@ -30,7 +30,7 @@ Sheldr allows you to quickly create new CLI applications while using the Sheldr 
     - [x] sourcecode_uri
     - [x] chargelog_uri
 - [ ] allow arguments for "add" command
-    - [ ] description
+    - [x] description
     - [ ] arguments
     - [ ] options
     - [ ] subcommands
