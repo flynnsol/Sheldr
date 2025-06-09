@@ -20,15 +20,15 @@ Sheldr allows you to quickly create new CLI applications while using the Sheldr 
 - [x] "add" command working to add commands to project
 - [ ] allow arguments for "new" command
     - [ ] license (do after template files are being used)
-    - [ ] author
-    - [ ] email
-    - [ ] summary
-    - [ ] description
-    - [ ] homepage
-    - [ ] rubyversion
-    - [ ] allowed_push_host
-    - [ ] sourcecode_uri
-    - [ ] chargelog_uri
+    - [x] author
+    - [x] email
+    - [x] summary
+    - [x] description
+    - [x] homepage
+    - [x] rubyversion
+    - [x] allowed_push_host
+    - [x] sourcecode_uri
+    - [x] chargelog_uri
 - [ ] allow arguments for "add" command
     - [ ] description
     - [ ] arguments
