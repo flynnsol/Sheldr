@@ -1,5 +1,5 @@
 class New < Dry::CLI::Command
-  attr_reader :name, :author, :summary, :description, :homepage, :rubyversion, :aph, :sourcecode, :changelog
+  attr_reader :name, :author, :email, :summary, :description, :homepage, :rubyversion, :aph, :sourcecode, :changelog
 
   desc "Creates a new CLI Application"
 
