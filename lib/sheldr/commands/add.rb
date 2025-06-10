@@ -23,7 +23,7 @@ class Add < Dry::CLI::Command
       alias_final = alias_final + ", "
     end
     alias_final = alias_final[0...-2]
-    @alises = alias_final
+    @aliases = alias_final
 
     create_command
   end
