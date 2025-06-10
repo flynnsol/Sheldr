@@ -1,5 +1,5 @@
 class Add < Dry::CLI::Command
-  attr_reader :name, :description
+  attr_reader :name, :description, :aliases
 
   desc "Creates a new command for your CLI Application"
 
