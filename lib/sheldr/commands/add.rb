@@ -52,7 +52,7 @@ end")
     # register command in commands.rb
     puts "Registering the new #{name} command."
     commands_file = File.new("commands.rb", "a")
-    if alises.nil?
+    if aliases.nil?
       commands_file.puts("#{capitalized_app_name}::CLI::Commands.register \"#{name}\", #{capitalized_name}")
     else
       commands_file.puts("#{capitalized_app_name}::CLI::Commands.register \"#{name}\", #{capitalized_name}, aliases: [#{aliases}]")
