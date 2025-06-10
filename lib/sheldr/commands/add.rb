@@ -5,6 +5,7 @@ class Add < Dry::CLI::Command
 
   argument :name, required: true, desc: "Name of the Command"
   option :desc, default: "Description", desc: "Description of the Command"
+  option :alises, default: nil, desc: "Alises for the Command"
 
   example [
     "command # Creates a new command for the CLI Application with the name 'command'"
@@ -13,6 +14,20 @@ class Add < Dry::CLI::Command
   def call(name: nil, **options)
     @name = name
     @description = options.fetch(:desc)
+    # Format Aliases
+    alias_input = options.fetch(:aliases)
+    alias_split = alias_input.split(" ")
+    alias_final = ""
+    loop_count = 0
+    for alias_name in alias_split do
+      alias_final = "\"" + alias_name + "\""
+      loop_count++
+      if loop_count != alias_split.length()
+        alias_final = alias_final + ", "
+      end
+    end
+    @alises = options.fetch(:aliases)
+
     create_command
   end
 
@@ -40,7 +55,11 @@ end")
     # register command in commands.rb
     puts "Registering the new #{name} command."
     commands_file = File.new("commands.rb", "a")
-    commands_file.puts("#{capitalized_app_name}::CLI::Commands.register \"#{name}\", #{capitalized_name}")
+    if alises.nil?
+      commands_file.puts("#{capitalized_app_name}::CLI::Commands.register \"#{name}\", #{capitalized_name}")
+    else
+      commands_file.puts("#{capitalized_app_name}::CLI::Commands.register \"#{name}\", #{capitalized_name}, aliases: [#{aliases}]")
+    end
   end
 
   # Call a system command
