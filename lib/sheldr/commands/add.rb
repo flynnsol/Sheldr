@@ -5,7 +5,7 @@ class Add < Dry::CLI::Command
 
   argument :name, required: true, desc: "Name of the Command"
   option :desc, default: "Description", desc: "Description of the Command"
-  option :alises, default: nil, desc: "Alises for the Command"
+  option :aliases, default: nil, desc: "Alises for the Command"
 
   example [
     "command # Creates a new command for the CLI Application with the name 'command'"
