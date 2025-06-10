@@ -19,6 +19,7 @@ class Add < Dry::CLI::Command
     alias_split = alias_input.split(" ")
     alias_final = ""
     for alias_name in alias_split do
+      puts alias_name
       alias_final = "\"" + alias_name + "\""
       alias_final = alias_final + ", "
     end
