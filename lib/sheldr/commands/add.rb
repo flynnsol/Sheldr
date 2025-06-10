@@ -18,15 +18,12 @@ class Add < Dry::CLI::Command
     alias_input = options.fetch(:aliases)
     alias_split = alias_input.split(" ")
     alias_final = ""
-    loop_count = 0
     for alias_name in alias_split do
       alias_final = "\"" + alias_name + "\""
-      loop_count++
-      if loop_count != alias_split.length()
-        alias_final = alias_final + ", "
-      end
+      alias_final = alias_final + ", "
     end
-    @alises = options.fetch(:aliases)
+    alias_final = alias_final[0...-2]
+    @alises = alias_final
 
     create_command
   end
