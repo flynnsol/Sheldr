@@ -17,7 +17,7 @@ class Add < Dry::CLI::Command
     @name = name
     @description = options.fetch(:desc)
     # Format Aliases
-    alias_input = options.fetch(:aliases)
+    @alias_input = options.fetch(:aliases)
     alias_final = ""
     if !alias_input.nil?
       alias_split = alias_input.split(" ")
@@ -30,7 +30,7 @@ class Add < Dry::CLI::Command
     # Set Aliases
     @aliases = alias_final
     # Format Arguments
-    args_input = options.fetch(:args)
+    @args_input = options.fetch(:args)
     args_final = ""
     if !args_input.nil?
       args_split = args_input.split("]")
