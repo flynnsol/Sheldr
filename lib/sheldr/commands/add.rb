@@ -50,7 +50,7 @@ class Add < Dry::CLI::Command
             # if required is there set it and description
             arg_required = clean_arg[1]
             arg_description = clean_arg[2]
-          elsif clean_arg[2].nil && !clean_arg[1].nil
+          elsif clean_arg[2].nil? && !clean_arg[1].nil?
             # if description is there just set description
             arg_description = clean_arg
           end
