@@ -35,8 +35,7 @@ class Add < Dry::CLI::Command
     if !args_input.nil?
       args_split = args_input.split("]")
       for arg in args_split do
-        clean_args = arg[1...-1]
-        puts clean_args
+        clean_args = arg[1...0]
         clean_arg = clean_args.split(", ")
         arg_name = nil
         arg_required = nil
