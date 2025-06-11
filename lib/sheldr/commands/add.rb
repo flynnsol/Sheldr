@@ -1,12 +1,12 @@
 class Add < Dry::CLI::Command
-  attr_reader :name, :description, :aliases, :args, :options
+  attr_reader :name, :description, :aliases, :arguments, :options
 
   desc "Creates a new command for your CLI Application"
 
   argument :name, required: true, desc: "Name of the Command"
   option :desc, default: "Description", desc: "Description of the Command"
-  option :aliases, default: nil, desc: "Alises for the Command"
-  option :args, default: nil, desc: "Arguments for the Command"
+  option :aliases, default: nil, desc: "Aliases for the Command"
+  option :arguments, default: nil, desc: "Arguments for the Command"
   option :options, default: nil, desc: "Options for the Command"
 
   example [
@@ -30,7 +30,7 @@ class Add < Dry::CLI::Command
     # Set Aliases
     @aliases = alias_final
     # Format Arguments
-    args_input = options.fetch(:args)
+    args_input = options.fetch(:arguments)
     args_final = ""
     if !args_input.nil?
       args_split = args_input.split("]")
@@ -61,7 +61,7 @@ class Add < Dry::CLI::Command
         end
       end
       # Set Arguments
-      @args = args_final
+      @arguments = args_final
     end
 
     create_command
