@@ -60,6 +60,7 @@ class Add < Dry::CLI::Command
             args_final = args_final + "argument :#{arg_name}, desc: \"#{arg_description}\""
           end
         end
+        args_final = args_final + "\n"
       end
       # Set Arguments
       @args = args_final
