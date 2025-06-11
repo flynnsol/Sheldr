@@ -20,7 +20,7 @@ class Add < Dry::CLI::Command
     alias_input = options.fetch(:aliases)
     alias_final = ""
     if !alias_input.nil?
-      alias_split = alias_input.split(" ")
+      alias_split = alias_input.split(", ")
       for alias_name in alias_split do
         alias_final = alias_final + "\"" + alias_name + "\""
         alias_final = alias_final + ", "
@@ -35,7 +35,8 @@ class Add < Dry::CLI::Command
     if !args_input.nil?
       args_split = args_input.split("]")
       for arg in args_split do
-        clean_arg = arg[1...0].split(", ")
+        clean_args = arg[1...-1]
+        clean_arg = clean_args.split(", ")
         arg_name = nil
         arg_required = nil
         arg_description = nil
