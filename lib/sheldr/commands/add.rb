@@ -17,10 +17,7 @@ class Add < Dry::CLI::Command
     @name = name
     @description = options.fetch(:desc)
     # Format Aliases
-    alias_input = nil
-    if !options.fetch(:aliases).nil?
-      alias_input = options.fetch(:aliases)
-    end
+    alias_input = options.fetch(:aliases)
     alias_final = ""
     if !alias_input.nil?
       alias_split = alias_input.split(" ")
@@ -38,7 +35,7 @@ class Add < Dry::CLI::Command
     if !args_input.nil?
       args_split = args_input.split("]")
       for arg in args_split do
-        clean_arg = arg[1...-1].split(", ")
+        clean_arg = arg[1...0].split(", ")
         arg_name = nil
         arg_required = nil
         arg_description = nil
@@ -59,7 +56,7 @@ class Add < Dry::CLI::Command
           if !arg_required.nil?
             args_final = args_final + "argument :#{arg_name}, required: #{arg_required}, desc: \"#{arg_description}\""
           else
-            args_final = args_final + "argument :#{arg_name}, desc: \"#{arg_description}\"\n"
+            args_final = args_final + "argument :#{arg_name}, desc: \"#{arg_description}\""
           end
         end
       end
