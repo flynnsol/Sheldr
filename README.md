@@ -32,10 +32,11 @@ Sheldr allows you to quickly create new CLI applications while using the Sheldr 
 - [ ] allow arguments for "add" command
     - [x] description
     - [x] aliases
-    - [ ] arguments
+    - [x] arguments
     - [ ] options
     - [ ] subcommands
         - [ ] subcommand arguments
         - [ ] subcommand options
+        - [ ] subcommand examples
     - [ ] examples
 - [ ] switch to creating files from template files
