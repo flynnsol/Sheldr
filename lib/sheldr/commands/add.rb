@@ -73,7 +73,7 @@ class Add < Dry::CLI::Command
       end
       if !call_method_tmp.nil?
         call_method_tmp = call_method_tmp + "**"
-        call_method = call_method_tmp
+        @call_method = call_method_tmp
       end
       # Set Arguments
       @args = args_final
