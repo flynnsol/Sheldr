@@ -18,7 +18,7 @@ class New < Dry::CLI::Command
     "app # Creates a new CLI Application with the name 'app'"
   ]
 
-  def call(name: nil, **options)
+  def call(name:, **options)
     # Set Variables
     @name = name
     @author = options.fetch(:author)
