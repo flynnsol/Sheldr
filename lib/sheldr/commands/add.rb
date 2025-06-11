@@ -1,5 +1,5 @@
 class Add < Dry::CLI::Command
-  attr_reader :name, :description, :aliases, :args, :options
+  attr_reader :call_method, :name, :description, :aliases, :args, :options
 
   desc "Creates a new command for your CLI Application"
 
@@ -14,6 +14,7 @@ class Add < Dry::CLI::Command
   ]
 
   def call(name:, **options)
+    @call_method = "*"
     @name = name
     @description = options.fetch(:desc)
     # Format Aliases
@@ -29,10 +30,13 @@ class Add < Dry::CLI::Command
     end
     # Set Aliases
     @aliases = alias_final
+    # Call Method Temp
+    call_method_tmp = ""
     # Format Arguments
     args_input = options.fetch(:args)
     args_final = ""
     if !args_input.nil?
+      # Update Args and Call Method
       args_split = args_input.split("]")
       for arg in args_split do
         clean_args = arg.delete_prefix("[")
@@ -55,12 +59,21 @@ class Add < Dry::CLI::Command
         end
         if !arg_description.nil?
           if !arg_required.nil?
+            # Required
             args_final = args_final + "argument :#{arg_name}, required: #{arg_required}, desc: \"#{arg_description}\""
+            call_method_tmp = call_method_tmp + "#{arg_name}:"
           else
+            # Not Required
             args_final = args_final + "argument :#{arg_name}, desc: \"#{arg_description}\""
+            call_method_tmp = call_method_tmp + "#{arg_name}: nil"
           end
         end
         args_final = args_final + "\n\t"
+        call_method_tmp = call_method_tmp + ", "
+      end
+      if !call_method_tmp.nil?
+        call_method_tmp = call_method_tmp + "**"
+        call_method = call_method_tmp
       end
       # Set Arguments
       @args = args_final
@@ -87,7 +100,7 @@ class Add < Dry::CLI::Command
 
   #{args}
   
-  def call(*)
+  def call(#{call_method})
     puts \"This is the new command #{name}.\"
   end
 end")
