@@ -50,7 +50,7 @@ class Add < Dry::CLI::Command
             arg_description = clean_arg[2]
           elsif clean_arg[2].nil? && !clean_arg[1].nil?
             # if description is there just set description
-            arg_description = clean_arg
+            arg_description = clean_arg[1]
           end
         end
         if !arg_description.nil?
@@ -60,7 +60,7 @@ class Add < Dry::CLI::Command
             args_final = args_final + "argument :#{arg_name}, desc: \"#{arg_description}\""
           end
         end
-        args_final = args_final + "\n"
+        args_final = args_final + "\n\t"
       end
       # Set Arguments
       @args = args_final
