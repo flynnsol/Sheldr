@@ -114,9 +114,4 @@ end")
       commands_file.puts("#{capitalized_app_name}::CLI::Commands.register \"#{name}\", #{capitalized_name}, aliases: [#{aliases}]")
     end
   end
-
-  # Call a system command
-  def system_command(syscmd)
-    puts `#{syscmd}`
-  end
 end
