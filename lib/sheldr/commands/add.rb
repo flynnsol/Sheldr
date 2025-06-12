@@ -84,6 +84,7 @@ class Add < Dry::CLI::Command
       for command_option in options_split do
         clean_options = command_option.delete_prefix("[")
         clean_option = clean_options.split(", ")
+        puts clean_option.length()
         option_name = nil
         option_default = nil
         option_description = nil
