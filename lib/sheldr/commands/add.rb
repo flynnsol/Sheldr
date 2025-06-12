@@ -79,12 +79,11 @@ class Add < Dry::CLI::Command
     # Format Options
     options_input = options.fetch(:options)
     options_final = ""
-    if options_input.nil?
+    if !options_input.nil?
       options_split = options_input.split("]")
       for command_option in options_split do
         clean_options = command_option.delete_prefix("[")
         clean_option = clean_options.split(", ")
-        puts clean_option.length()
         option_name = nil
         option_default = nil
         option_description = nil
