@@ -5,7 +5,7 @@ require_relative "lib/sheldr/version"
 Gem::Specification.new do |spec|
   spec.name = "sheldr"
   spec.version = Sheldr::VERSION
-  spec.authors = ["Flynn"]
+  spec.authors = ["Flynn Sol"]
   spec.email = ["flynn@flynnsol.com"]
 
   spec.summary = "Ruby CLI Building Tool"
