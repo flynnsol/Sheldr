@@ -72,10 +72,6 @@ class Add < Dry::CLI::Command
         args_final = args_final + "\n\t"
         call_method_tmp = call_method_tmp + ", "
       end
-      if !call_method_tmp.nil?
-        call_method_tmp = call_method_tmp + "**"
-        @call_method = call_method_tmp
-      end
       # Set Arguments
       @args = args_final
     end
@@ -103,15 +99,25 @@ class Add < Dry::CLI::Command
       end
     end
 
+    # Set Call Method
+    if !call_method_tmp.nil?
+      call_method_tmp = call_method_tmp + "**" 
+    else
+      call_method_tmp = "*"
+    end
+
     if !options_final.nil?
-      if !@call_method == "*"?
-        @call_method = @call_method + "options"
+      if !call_method_tmp == "*"?
+        call_method_tmp = call_method_tmp + "options"
       else
-        @call_method = "**options"
+        call_method_tmp = "**options"
       end
     end
+
     # Set Options
     @options = options_final
+
+    @call_method = call_method_tmp
 
     create_command
   end
