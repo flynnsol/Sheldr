@@ -107,10 +107,10 @@ class Add < Dry::CLI::Command
     end
 
     if !options_final.nil?
-      if !call_method_tmp == "*"
-        call_method_tmp = call_method_tmp + "options"
-      else
+      if call_method_tmp == "*"
         call_method_tmp = "**options"
+      else
+        call_method_tmp = call_method_tmp + "options"
       end
     end
 
