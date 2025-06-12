@@ -8,6 +8,7 @@ class Add < Dry::CLI::Command
   option :aliases, default: "", desc: "Alises for the Command"
   option :args, default: "", desc: "Arguments for the Command"
   option :options, default: "", desc: "Options for the Command"
+  option :examples, default: "", desc: "Examples for the Command"
 
   example [
     "command # Creates a new command for the CLI Application with the name 'command'"
@@ -79,6 +80,39 @@ class Add < Dry::CLI::Command
       @args = args_final
     end
 
+    # Format Options
+    options_input = options.fetch(:options)
+    options_final = ""
+    if options_input.nil?
+      options_split = options_input.split("]")
+      for command_option in options_input do
+        clean_options = command_option.delete_prefix("[")
+        clean_option = clean_options.split(", ")
+        option_name = nil
+        option_default = nil
+        option_description = nil
+        if clean_option.length == 3
+          option_name = clean_option[0]
+          option_default = clean_option[1]
+          option_description = clean_option[2]
+          options_final = options_final + "option :#{option_name}, default: \"#{option_default}\", desc: \"#{option_description}\""
+          options_final = options_final + "\n\t"
+        else
+          puts "Incorrect Option Format"
+        end
+      end
+    end
+
+    if !options_final.nil?
+      if !@call_method == "*"?
+        @call_method = @call_method + "options"
+      else
+        @call_method = "**options"
+      end
+    end
+    # Set Options
+    @options = options_final
+
     create_command
   end
 
@@ -99,6 +133,7 @@ class Add < Dry::CLI::Command
   desc \"#{description}\"
 
   #{args}
+  #{options}
   
   def call(#{call_method})
     puts \"This is the new command #{name}.\"
