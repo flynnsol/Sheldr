@@ -72,10 +72,10 @@ class Add < Dry::CLI::Command
         args_final = args_final + "\n\t"
         call_method_tmp = call_method_tmp + ", "
       end
-      # Set Arguments
-      @args = args_final
     end
-
+    # Set Arguments
+    @args = args_final
+    
     # Format Options
     options_input = options.fetch(:options)
     options_final = ""
