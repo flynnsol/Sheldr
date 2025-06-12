@@ -12,7 +12,51 @@ Sheldr allows you to quickly create new CLI applications while using the Sheldr 
 
 ## How to use Sheldr:
 
-> TODO: Add Usage Information Here
+> [!IMPORTANT]
+> Sheldr is in a very early state of functionality with minor error management.
+
+<br>
+
+Install Sheldr by using:
+
+    $ gem install sheldr
+
+Navigate to the folder that you want your project to be created in and then run:
+
+    $ sheldr new app
+
+"app" being the name of your application. This will create a new project with a structure like so:
+
+```
+app/
+|-- exe/
+|   |-- app
+|-- lib/
+|   |-- app/
+|   |   |-- commands/
+|   |   |   |-- version.rb
+|   |   |-- commands.rb
+|   |   |-- version.rb
+|   |-- app.rb
+|-- tests/
+|-- .gitignore
+|-- CHANGELOG.md
+|-- CODE_OF_CONDUCT.md
+|-- Gemfile
+|-- Gemfile.lock
+|-- LICENSE.txt
+|-- Rakefile
+|-- app.gemspec
+```
+
+You can now run your application by navigating to app/exe and running:
+
+    $ ruby app
+
+Which will show you the list of commands, currently only having one which you can test with:
+
+    $ ruby app version
+
 
 ## Feature Functionality Tracking
 
@@ -33,7 +77,7 @@ Sheldr allows you to quickly create new CLI applications while using the Sheldr 
     - [x] description
     - [x] aliases
     - [x] arguments
-    - [ ] options
+    - [/] options
     - [ ] subcommands
         - [ ] subcommand arguments
         - [ ] subcommand options
