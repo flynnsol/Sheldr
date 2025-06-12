@@ -87,7 +87,7 @@ class Add < Dry::CLI::Command
         option_name = nil
         option_default = nil
         option_description = nil
-        if clean_option.length == 3
+        if clean_option.length == 3?
           option_name = clean_option[0]
           option_default = clean_option[1]
           option_description = clean_option[2]
