@@ -57,6 +57,21 @@ Which will show you the list of commands, currently only having one which you ca
 
     $ ruby app version
 
+To add commands to your new app you can use the "add" command from your app/ directory:
+
+    $ sheldr add command
+
+There are many optional arguments for both the "new" and "add" commands which I will list below:
+
+
+> New
+
+    $ sheldr new app --author="authorname"
+    $ sheldr new app --email="email"
+    $ sheldr new app --summary="summary"
+    $ sheldr new app --description="description"
+    $ sheldr new app --homepage="homepageURI"
+
 
 ## Feature Functionality Tracking
 
