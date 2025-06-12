@@ -75,44 +75,8 @@ class Add < Dry::CLI::Command
     end
     # Set Arguments
     @args = args_final
-    
-    # Format Options
-    options_input = options.fetch(:options)
-    options_final = ""
-    if options_input.nil?
-      options_split = options_input.split("]")
-      for command_option in options_input do
-        clean_options = command_option.delete_prefix("[")
-        clean_option = clean_options.split(", ")
-        option_name = nil
-        option_default = nil
-        option_description = nil
-        if clean_option.length == 3
-          option_name = clean_option[0]
-          option_default = clean_option[1]
-          option_description = clean_option[2]
-          options_final = options_final + "option :#{option_name}, default: \"#{option_default}\", desc: \"#{option_description}\""
-          options_final = options_final + "\n\t"
-        else
-          puts "Incorrect Option Format"
-        end
-      end
-    end
 
-    # Set Call Method
-    if !call_method_tmp.nil?
-      call_method_tmp = call_method_tmp + "**" 
-    else
-      call_method_tmp = "*"
-    end
 
-    if !options_final.nil?
-      if !call_method_tmp == "*"?
-        call_method_tmp = call_method_tmp + "options"
-      else
-        call_method_tmp = "**options"
-      end
-    end
 
     # Set Options
     @options = options_final
