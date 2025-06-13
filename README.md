@@ -71,7 +71,17 @@ There are many optional arguments for both the "new" and "add" commands which I 
     $ sheldr new app --summary="summary"
     $ sheldr new app --description="description"
     $ sheldr new app --homepage="homepageURI"
+    $ sheldr new app --rubyversion=">= 3.1.0"
+    $ sheldr new app --allowed_push_host="https://rubygems.org"
+    $ sheldr new app --sourcecode_uri="sourcecodeURI"
+    $ sheldr new app --changelog_uri="changelogURI"
 
+> Add
+
+    $ sheldr add command --description="description"
+    $ sheldr add command --aliases="[alias1, alias2]"
+    $ sheldr add command --args="[argname, true, description][argname2, description2]"
+    $ sheldr add command --options="[optionname, defaultfield, description][optionname2, defaultfield2, description2]"
 
 ## Feature Functionality Tracking
 
